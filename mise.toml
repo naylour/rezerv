@@ -1,0 +1,18 @@
+[tools]
+python = "3.12"
+ruff = "0.15.16"
+uv = "0.11.19"
+
+[tasks.setup]
+description = "Инициализация проекта для работы"
+run = [
+    "uv sync --dev",
+    "uv tool install nuitka"
+]
+
+
+[tasks.build]
+description = "Сборка исполняемого CLI через nuitka"
+run = [
+    "uv run nuitka --onefile --output-dir=dist --remove-output --output-filename=rezerv ./src/main.py"
+]
